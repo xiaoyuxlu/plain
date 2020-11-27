@@ -72,7 +72,7 @@ pub fn from_bytes<T>(bytes: &[u8]) -> Result<&T, Error>
 where
     T: Plain,
 {
-    try!(check_alignment::<T>(bytes));
+    //try!(check_alignment::<T>(bytes));
     try!(check_length::<T>(bytes, 1));
     Ok(unsafe { &*(bytes.as_ptr() as *const T) })
 }
@@ -122,7 +122,7 @@ pub fn slice_from_bytes_len<T>(bytes: &[u8], len: usize) -> Result<&[T], Error>
 where
     T: Plain,
 {
-    try!(check_alignment::<T>(bytes));
+    // try!(check_alignment::<T>(bytes));
     try!(check_length::<T>(bytes, len));
     Ok(unsafe {
         slice::from_raw_parts(bytes.as_ptr() as *const T, len)
